@@ -1,10 +1,10 @@
-# LH Public API Java Client
+# Deutsche Bahn Fahrplan API
 
-This projects provides a Java Client for [LH Public API](https://developer.lufthansa.com/docs).
+This projects provides a [Swagger](http://swagger.io/specification/)/[OpenAPI](https://github.com/OAI/OpenAPI-Specification) specification for the Deutsche Bahn Fahrplan API:
 
-This client is based of the [Swagger](http://swagger.io/specification/)/[OpenAPI](https://github.com/OAI/OpenAPI-Specification) specifications for the LH Public API from the [lhapi-specification](https://github.com/highsource/lhapi-specification) project.
+* [db-fahrplan-api-specification.yaml](https://github.com/highsource/db-fahrplan-api/blob/master/db-fahrplan-api-specification.yaml)
 
-* [lhapi-specification](https://github.com/highsource/lhapi-specification/blob/master/lhapi-specification.yaml)
+Additionally, the project also provides a simple Java Client generated using [Swagger Codegen](https://github.com/swagger-api/swagger-codegen) and slightly customized.
 
 ## Usage
 
@@ -16,50 +16,12 @@ Add the following dependency to your project:
 
 ```xml
 <dependency>
-	<groupId>org.hisrc.lhapi</groupId>
-	<artifactId>lhapi-client</artifactId>
+	<groupId>org.hisrc.db-fahrplan-api</groupId>
+	<artifactId>db-fahrplan-api-client</artifactId>
 	<version>...</version>
 </dependency>
 ```
 
 ### Using the client in your Java code
 
-### Creating the client
-
-```
-LhApiClient client = new AuthenticatingLhApiClient(clientId, clientSecret);
-```
-
-### Getting the flight status
-
-Flight status of `LO379` (today):
-
-```
-FlightStatusResponse departuresStatus = client.flightStatus("LO379", LocalDate.now());
-```
-
-### Getting departures
-
-Departures from DME +/- one hour from now:
-
-```
-FlightsStatusResponse departuresStatus = client.departuresStatus(
-	"DME",
-	LocalDateTime.now().minusHours(1),
-	LocalDateTime.now().plusHours(1));
-```
-
-### Getting arrivals
-
-Arrivals to FRA +/- one hour from now:
-
-```
-FlightsStatusResponse arrivalsStatus = client.arrivalsStatus(
-	"FRA",
-	LocalDateTime.now().minusHours(1),
-	LocalDateTime.now().plusHours(1));
-```
-
-## License
-
-Please note that this code is currently under the [GPL-3.0](https://opensource.org/licenses/GPL-3.0) license. We plan to switch to MIT or BSD or dual licensing in the future.
+TBD
