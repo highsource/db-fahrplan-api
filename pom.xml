@@ -14,7 +14,7 @@
 		<system>GitHub Issues</system>
 		<url>https://github.com/highsource/db-fahrplan-api/issues</url>
 	</issueManagement>
-	<inceptionYear>2015</inceptionYear>
+	<inceptionYear>2016</inceptionYear>
 	<scm>
 		<url>https://github.com/highsource/db-fahrplan-api</url>
 		<connection>scm:git:git://github.com/highsource/db-fahrplan-api.git</connection>
