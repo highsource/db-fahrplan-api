@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- =================================== -->
+<!-- hafasRestLocation.xsd (Version 1.0) -->
+<!-- =================================== -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="LocationList">
+        <xs:annotation>
+            <xs:documentation>The location list contains either named coordinates or stops/stations with name and id as a result of a location request. The data of every list entry can be used for further trip or departureBoard requests.
+                </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="StopLocation"/>
+                <xs:element ref="CoordLocation"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="StopLocation">
+        <xs:annotation>
+            <xs:documentation>The element StopLocation specifies  a stop/station in a result of a location request. It contains an output name and an id.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attributeGroup ref="attlist.StopLocation"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:attributeGroup name="attlist.StopLocation">
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Contains the output name of this stop or station</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="x" type="xs:int" use="required">
+            <xs:annotation>
+                <xs:documentation>The WGS84 x coordinate as integer (multiplied by 1,000,000)
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="y" type="xs:int" use="required">
+            <xs:annotation>
+                <xs:documentation>The WGS84 y coordinate as integer (multiplied by 1,000,000)
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>This ID can either be used as originId or destId to perform a trip request or to call a departure  board.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:element name="CoordLocation">
+        <xs:annotation>
+            <xs:documentation>The element CoordLocation specifies a coordinate based location in a result of a location request. It contains an output name, x-coordinate, y coordinate and a  type (address or point of interest). The coordinates and the name can be used as origin or destination parameters to perform a trip request.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attributeGroup ref="attlist.CoordLocation"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:attributeGroup name="attlist.CoordLocation">
+        <xs:attribute name="x" type="xs:int" use="required">
+            <xs:annotation>
+                <xs:documentation>The WGS84 x coordinate as integer (multiplied by 1,000,000)
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="y" type="xs:int" use="required">
+            <xs:annotation>
+                <xs:documentation>The WGS84 y coordinate as integer (multiplied by 1,000,000)
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Contains the output name of the address or point of interest</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="type" use="required">
+            <xs:annotation>
+                <xs:documentation>The attribute type specifies the type of location. Valid values are ADR (address) or POI (point of interest). This attribute can be used to do some sort of classification in the user interface. For later trip requests it does not have any meaning.
+                    </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="ADR"/>
+                    <xs:enumeration value="POI"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+</xs:schema>

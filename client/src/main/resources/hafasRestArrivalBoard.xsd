@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- edited with XMLSpy v2010 rel. 3 sp1 (x64) (http://www.altova.com) by HaCon (HaCon Ingenieurgesellschaft mbH) -->
+<!-- =================================== -->
+<!-- hafasRestArrivalBoard.xsd (Version 1.2) -->
+<!-- ======================================= -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="ArrivalBoard">
+        <xs:annotation>
+            <xs:documentation>The arrival board lists up to 20 arrivals at a specific stop/station or group of stop/stations.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="20">
+                <xs:element ref="Arrival"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="attlist.ArrivalBoard"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:attributeGroup name="attlist.ArrivalBoard">
+        <xs:attribute name="error" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>If some problem occurs while creating the arrival board you can find an error code here. Note: These error codes are not suitable for end users but only for reporting purposes. Most of the errors do not indicate a system failure but data or request parameter issues.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:element name="Arrival">
+        <xs:annotation>
+            <xs:documentation>The element Arrival contains all information about a arrival like time, date, stop/station name, track, realtime time, date and track, origin, name and type of the journey. It also contains a reference to journey details.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="JourneyDetailRef"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="attlist.Arrival"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:attributeGroup name="attlist.Arrival">
+        <xs:attribute name="name" use="required">
+            <xs:annotation>
+                <xs:documentation>The attribute name specifies the name of the arriving journey (e.g. "Bus 100").</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="type" use="required">
+            <xs:annotation>
+                <xs:documentation>The attribute type specifies the type of the arriving journey. Valid values are IC (InterCity), LYN (Lyntog), REG (Regionaltog), S (S-Tog), TOG (other train), BUS (Bus), EXB (Express Buss), NB (Nattbus), TB (Telebus, other form of transport), F (Ferry) and M (Metro).</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="IC"/>
+                    <xs:enumeration value="LYN"/>
+                    <xs:enumeration value="REG"/>
+                    <xs:enumeration value="S"/>
+                    <xs:enumeration value="TOG"/>
+                    <xs:enumeration value="BUS"/>
+                    <xs:enumeration value="EXB"/>
+                    <xs:enumeration value="NB"/>
+                    <xs:enumeration value="TB"/>
+                    <xs:enumeration value="F"/>
+                    <xs:enumeration value="M"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="stop" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Contains the name of the stop/station.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="time" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Time in format HH:MM.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="date" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Date in format DD.MM.YY.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="track" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Track information, if available.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="rtTime" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Realtime time in format HH:MM if available.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="rtDate" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Realtime date in format DD.MM.YY, if available.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="rtTrack" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Realtime track information, if available.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="origin" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Origin of the journey.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="cancelled" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation>This attribute gives information whether this journey is cancelled</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="messages" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation>This attribute gives the number of messages for this journey</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="state" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>This attribute gives the state of the current journey</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:element name="JourneyDetailRef">
+        <xs:annotation>
+            <xs:documentation>Reference to journey details.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attributeGroup ref="attlist.JourneyDetailRef"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:attributeGroup name="attlist.JourneyDetailRef">
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Contains a URL to call the ReST interface for journey details.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+</xs:schema>
