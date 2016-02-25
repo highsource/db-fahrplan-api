@@ -24,4 +24,29 @@ Add the following dependency to your project:
 
 ### Using the client in your Java code
 
-TBD
+#### Creating the client
+
+```
+DbFahrplanApiClient client = new DefaultDbFahrplanApiClient(authKey);
+```
+
+#### Querying locations
+
+```
+List<StopLocation> stopLocations = client.locationName("Frankfurt Hbf");
+```
+
+#### Querying departures or arrivals
+
+```
+List<DepartureOrArrival> arrivals = client.arrivalBoard("008000105", LocalDateTime.now());
+List<DepartureOrArrival> departures = client.departureBoard("008000105", LocalDateTime.now());
+```
+
+#### Querying journey details
+
+```
+List<DepartureOrArrival> arrivals = client.arrivalBoard("008000105", LocalDateTime.now());
+JourneyDetailRef journeyDetailRef = arrivals.get(0).getJourneyDetailRef();
+JourneyDetail journeyDetail = client.journeyDetail(journeyDetailRef);
+```

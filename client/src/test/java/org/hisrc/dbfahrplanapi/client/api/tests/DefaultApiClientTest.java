@@ -20,7 +20,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class DeafultApiClientTest {
+public class DefaultApiClientTest {
 
 	private static final String AUTH_KEY_PROPERTY_KEY = "authKey";
 
