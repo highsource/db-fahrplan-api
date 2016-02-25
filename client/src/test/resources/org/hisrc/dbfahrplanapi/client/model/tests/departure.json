@@ -68,7 +68,7 @@
     "stop":"Frankfurt Hbf (tief)",
     "time":"15:04",
     "date":"2016-02-22",
-    "direction":"R�dermark-Ober Roden",
+    "direction":"Rödermark-Ober Roden",
     "track":"102",
     "JourneyDetailRef":{
       "ref":"http://DOMAINE-TOBE-DEFINED.de/bin/dev/v4/r16.04/rest.exe/v1.0/journeyDetail?ref=686085%2F419116%2F542178%2F42394%2F80%3Fdate%3D2016-02-22%26station_evaId%3D8098105%26station_type%3Ddep%26authKey%3DZUGRIFFSCODE%26lang%3Dde%26format%3Djson%26"

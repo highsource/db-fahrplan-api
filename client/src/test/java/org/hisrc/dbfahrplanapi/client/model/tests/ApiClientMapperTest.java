@@ -29,7 +29,7 @@ public class ApiClientMapperTest {
 			final DepartureOrArrival departure = response.getDepartureBoard().getDeparture().get(0);
 			Assert.assertEquals("RE 15306", departure.getName());
 			Assert.assertEquals("RE", departure.getType());
-			Assert.assertEquals(8000105, departure.getStopid().intValue());
+			Assert.assertEquals("8000105", departure.getStopid());
 			Assert.assertEquals("Frankfurt(Main)Hbf", departure.getStop());
 			Assert.assertEquals(LocalTime.parse("15:01"), departure.getTime());
 			Assert.assertEquals(LocalDate.parse("2016-02-22"), departure.getDate());
@@ -47,7 +47,7 @@ public class ApiClientMapperTest {
 			Assert.assertEquals(1, response.getJourneyDetail().getNotes().getNote().size());
 			final Stop stop = response.getJourneyDetail().getStops().getStop().get(0);
 			Assert.assertEquals("Frankfurt(Main)Hbf", stop.getName());
-			Assert.assertEquals(8000105, stop.getId().intValue());
+			Assert.assertEquals("8000105", stop.getId());
 			Assert.assertEquals(8.663785, stop.getLon(), 0.000001);
 			Assert.assertEquals(50.107149, stop.getLat(), 0.000001);
 			Assert.assertEquals(LocalTime.parse("15:02"), stop.getDepTime());
@@ -62,7 +62,7 @@ public class ApiClientMapperTest {
 			LocationResponse response = sut.readValue(is, LocationResponse.class);
 			Assert.assertEquals(50, response.getLocationList().getStopLocation().size());
 			final StopLocation stopLocation = response.getLocationList().getStopLocation().get(0);
-			Assert.assertEquals(8000105, stopLocation.getId().intValue());
+			Assert.assertEquals("008000105", stopLocation.getId());
 			Assert.assertEquals("Frankfurt(Main)Hbf", stopLocation.getName());
 			Assert.assertEquals(8.663785, stopLocation.getLon(), 0.000001);
 			Assert.assertEquals(50.107149, stopLocation.getLat(), 0.000001);
