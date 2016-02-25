@@ -8,8 +8,8 @@ info:
 #    url: TBD
 schemes:
   - http
-host: tbd
-basePath: /v
+host: open-api.bahn.de
+basePath: /bin/rest.exe
 consumes:
   - application/x-www-form-urlencoded
   - application/json
@@ -18,6 +18,7 @@ securityDefinitions:
     type: apiKey
     in: query
     name: authKey
+
 paths:
 
   /location.name:
@@ -283,9 +284,9 @@ definitions:
   ArrivalBoardResponse:
     type: object
     required:
-      - DepartureBoard
+      - ArrivalBoard
     properties:
-      DepartureBoard:
+      ArrivalBoard:
         $ref: '#/definitions/ArrivalBoard'
   ArrivalBoard:
     type: object
