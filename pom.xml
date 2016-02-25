@@ -3,7 +3,7 @@
 	<groupId>org.hisrc.db-fahrplan-api</groupId>
 	<artifactId>db-fahrplan-api-project</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>Deutsche Bahn Fahrplan API - Project</name>
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
