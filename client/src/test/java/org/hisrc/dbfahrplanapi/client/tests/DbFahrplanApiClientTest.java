@@ -55,8 +55,7 @@ public class DbFahrplanApiClientTest {
 
 	@Test
 	public void returnsArrivalBoardResponse() throws ApiException {
-//		List<DepartureOrArrival> arrivals = sut.arrivalBoard("008000105", LocalDateTime.now().withTime(15, 01, 0, 0));
-		List<DepartureOrArrival> arrivals = sut.arrivalBoard("008000105", LocalDateTime.parse("2016-02-25T15:01"));
+		List<DepartureOrArrival> arrivals = sut.arrivalBoard("008000105", LocalDateTime.now().withTime(15, 01, 0, 0));
 		Assert.assertTrue(arrivals.size() > 1);
 	}
 
