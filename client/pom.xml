@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.hisrc.db-fahrplan-api</groupId>
 		<artifactId>db-fahrplan-api-project</artifactId>
-		<version>1.0.2-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<dependencies>
 		<dependency>
