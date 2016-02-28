@@ -110,13 +110,7 @@ paths:
           required: true
           type: string
         -
-          name: date
-          description: The date of departures.
-          in: query
-          required: true
-          type: string
-        -
-          name: time
+          name: dateTime
           description: The time of departures.
           in: query
           required: true
@@ -169,13 +163,7 @@ paths:
           required: true
           type: string
         -
-          name: date
-          description: The date of arrivals.
-          in: query
-          required: true
-          type: string
-        -
-          name: time
+          name: datetime
           description: The time of arrivals.
           in: query
           required: true
@@ -303,8 +291,7 @@ definitions:
       - type
       - stopid
       - stop
-      - time
-      - date
+      - datetime
       - direction
       - track
       - JourneyDetailRef
@@ -317,10 +304,8 @@ definitions:
         type: string
       stop:
         type: string
-      time:
-        $ref: '#/definitions/LocalTime'
-      date:
-        $ref: '#/definitions/LocalDate'
+      datetime:
+        $ref: '#/definitions/LocalDateTime'
       direction:
         type: string
       track:
@@ -377,8 +362,7 @@ definitions:
       - lon
       - lat
       - routeIdx
-      - depTime
-      - depDate
+      - depDateTime
       - track
     properties:
       id:
@@ -394,10 +378,8 @@ definitions:
       routeIdx:
         type: integer
         format: int32
-      depTime:
-        $ref: '#/definitions/LocalTime'
-      depDate:
-        $ref: '#/definitions/LocalDate'
+      depDateTime:
+        $ref: '#/definitions/LocalDateTime'
       track:
         type: string
   Names:
@@ -503,7 +485,7 @@ definitions:
         format: int32
       $:
         type: string
-  LocalTime:
+  LocalDateTime:
     type: string
-  LocalDate:
-    type: string
+    format: date-time
+    description: ISO8601 for example 1990-12-31T15:59-08:00
